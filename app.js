@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
-import { rateLimiter } from './middlewares/rateLimiter';
+import { rateLimiter } from './middlewares/rateLimiter.js';
 
 dotenv.config();
 
