@@ -1,3 +1,5 @@
-export default dbConfig = {
+const dbConfig = {
     
 }
+
+export default dbConfig;

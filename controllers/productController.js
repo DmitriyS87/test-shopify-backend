@@ -11,6 +11,8 @@ const getProducts = async (req, res, next) => {
     }
 }
 
-export default ProductController = {
+const ProductController = {
     getProducts
 };
+
+export default ProductController;

@@ -35,9 +35,10 @@ const insertRecord = async (req, res) => {
     }
 };
 
-
-export default DBController = {
+const DBController = {
     createTable,
     dropTable,
     insertRecord,
 };
+
+export default DBController

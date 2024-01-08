@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import { rateLimiter } from './middlewares/rateLimiter.js';
-import productsRoute from './routes/productsRoute.js';
+import productsRoute from './routes/productRoutes.js';
 
 
 // dotenv.config();

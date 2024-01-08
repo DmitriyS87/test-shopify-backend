@@ -17,7 +17,9 @@ const getProduct = async (id) => {
   return data;
 }
 
-export default ShopifyService = {
+const ShopifyService = {
   getProducts,
   getProduct
 };
+
+export default ShopifyService;
