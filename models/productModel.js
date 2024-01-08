@@ -1,39 +1,32 @@
-const db = {}
+const getProductModel = (sequelize, DataTypes) => {
+    const Product = sequelize.define('Product', {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        shopify_id: {
+            type: DataTypes.STRING,
+            unique: true,
+        },
+        html: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+    });
 
-const getAllProducts = async () => {
-    const result = await db.query('SELECT * FROM products');
-    return result.rows;
+    return Product;
 };
 
-const getProductById = async (userId) => {
-    const result = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
-    return result.rows[0];
-};
-
-const createProduct = async (user) => {
-    const { name, email } = user;
-    const result = await db.query('INSERT INTO users(name, email) VALUES($1, $2) RETURNING *', [name, email]);
-    return result.rows[0];
-};
-
-const updateProduct = async (userId, updatedData) => {
-    const result = await db.query('UPDATE users SET name = $2, email = $3 WHERE id = $1 RETURNING *', [
-        userId,
-        updatedData.name,
-        updatedData.email,
-    ]);
-    return result.rows[0];
-};
-
-const deleteProduct = async (userId) => {
-    const result = await db.query('DELETE FROM users WHERE id = $1 RETURNING *', [userId]);
-    return result.rows[0];
-};
-
-module.exports = {
-    getAllProducts,
-    getProductById,
-    createProduct,
-    updateProduct,
-    deleteProduct,
-};
+export default getProductModel;

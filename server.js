@@ -1,7 +1,23 @@
 import app from './app.js';
+import AppService from './services/appService.js';
+import { sequelize } from './core/db.js';
 
 const port = process.env.PORT || 8080;
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+async function startServer() {
+    try {
+        console.log('Starting server...');
+        sequelize.sync()
+        .then(AppService.syncDataWithExternalServer)
+        .then(() => {
+            app.listen(port, () => {
+                console.log(`Listening on port ${port}`);
+            });
+        });
+    } catch (error) {
+        console.error('Error staring server:', error);
+    }
+}
+
+startServer();
+

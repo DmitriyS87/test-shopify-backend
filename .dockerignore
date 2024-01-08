@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 .git
 .env
+.jsconfig.json
+nodemon.json
