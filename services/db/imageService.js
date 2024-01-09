@@ -47,12 +47,7 @@ async function deleteImage(id) {
     if (!image) {
       throw new Error("Image not found");
     }
-
-    const isDeleted = await deleteImageIfNotLinked(id);
-    if (!isDeleted) {
-      throw new Error("Image has linked products");
-    }
-
+    await Image.destroy();
     return "Image deleted successfully";
   } catch (error) {
     throw new Error(`Error deleting image: ${error.message}`);
