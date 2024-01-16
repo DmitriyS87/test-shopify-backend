@@ -20,13 +20,12 @@ const updateOrCreateProductImage = async ({ ProductId, ImageId }) => {
 
     return newRecord;
   } catch (error) {
-    console.error("Error updating or creating product-image relation:", error);
-    throw error;
+    throw new Error(`Error updating or creating product-image relation: ${error}`);
   }
 };
 
-const ProductImageService = {
+const ProductImageDBService = {
   updateOrCreateProductImage,
 };
 
-export default ProductImageService;
+export default ProductImageDBService;

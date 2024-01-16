@@ -5,17 +5,20 @@ import cors from "cors";
 import morgan from "morgan";
 import { rateLimiter } from "./middlewares/rateLimiter.js";
 import productsRoute from "./routes/productRoutes.js";
+import { morganConfig } from "./core/config.js";
 
 const app = express();
 
 app.use(helmet());
-app.use(morgan("dev"));
+app.use(morgan(morganConfig.logLvl));
 app.use(express.json());
 app.use(cors());
 app.use(rateLimiter);
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
+
 app.use("/products", productsRoute);
+
+app.get("/", (req, res) => {
+  res.send("Server started successfully");
+});
 
 export default app;

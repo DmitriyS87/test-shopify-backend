@@ -67,12 +67,11 @@ async function updateOrCreateImage(imageData) {
     }
     return image;
   } catch (error) {
-    console.error("Error updating or creating image:", error);
-    throw error;
+    throw new Error(`Update image: ${error.message}`);
   }
 }
 
-const ImageService = {
+const ImageDBService = {
   createImage,
   getAllImages,
   getImageById,
@@ -81,4 +80,4 @@ const ImageService = {
   updateOrCreateImage,
 };
 
-export default ImageService;
+export default ImageDBService;

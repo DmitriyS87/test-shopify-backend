@@ -76,12 +76,11 @@ async function updateOrCreateProduct(productData) {
     }
     return product;
   } catch (error) {
-    console.error("Error updating or creating product:", error);
-    throw error;
+    throw new Error(`Error updating or creating product: ${error}`);
   }
 }
 
-const ProductService = {
+const ProductDBService = {
   createProduct,
   getAllProducts,
   getProductById,
@@ -90,4 +89,4 @@ const ProductService = {
   updateOrCreateProduct,
 };
 
-export default ProductService;
+export default ProductDBService;

@@ -1,5 +1,5 @@
-import { transformShopifyProduct } from "../helpers/index.js";
-import DBCommonService from "./db/dBCommonService.js";
+import { sanitizeProduct, transformShopifyProduct } from "../helpers/product.js";
+import productService from "./productService.js";
 import ShopifyService from "./shopify/shopify.js";
 
 const syncDataWithExternalServer = async () => {
@@ -7,14 +7,13 @@ const syncDataWithExternalServer = async () => {
     const products = await ShopifyService.getProducts();
     return await addShopifyProducts(products);
   } catch (error) {
-    console.log("error:", JSON.stringify(error?.graphQLErrors));
-    throw new Error(`Error syncing data: ${error.message}`);
+    throw new Error(`Error syncing data: ${error}`);
   }
 };
 
 async function addShopifyProducts(graphqlData) {
-  const products = transformShopifyProduct(graphqlData);
-  return DBCommonService.addProducts(products);
+  const products = transformShopifyProduct(graphqlData).map(sanitizeProduct);
+  return productService.addProducts(products);
 }
 
 const AppService = {

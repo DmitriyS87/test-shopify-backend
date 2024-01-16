@@ -1,16 +1,16 @@
-import DBCommonService from "../services/db/dBCommonService.js";
+import ProductService from "../services/productService.js";
 
 const getProducts = async (req, res, next) => {
   try {
-    const products = await DBCommonService.getProducts();
-    const result = filterProductData(products);
+    const products = await ProductService.getProducts();
+    const result = prepareProductData(products);
     return res.status(200).json(result);
   } catch (error) {
     next(error);
   }
 };
 
-function filterProductData(productData) {
+function prepareProductData(productData) {
   return productData.map((product) => {
     const filteredProduct = {
       id: product.id,

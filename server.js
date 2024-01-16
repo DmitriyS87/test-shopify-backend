@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import app from "./app.js";
 import AppService from "./services/appService.js";
 import { sequelize } from "./core/db.js";
@@ -6,7 +7,6 @@ const port = process.env.PORT || 8080;
 
 async function startServer() {
   try {
-    console.log("Starting server...");
     sequelize
       .sync()
       .then(AppService.syncDataWithExternalServer)
