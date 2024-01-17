@@ -14,11 +14,11 @@ export const morganConfig = {
 
 // db
 export const dbConfig = {
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  password: process.env.PGPASSWORD,
-  db: process.env.PGDATABASE,
-  port: process.env.PGPORT,
+  user: process.env.POSTGRES_USER,
+  host: process.env.POSTGRES_HOST,
+  password: process.env.POSTGRES_PASSWORD,
+  db: process.env.POSTGRES_NAME,
+  port: process.env.POSTGRES_PORT,
   pool: {
     max: Number(process.env.DB_POOL_MAX) || 10,
     min: Number(process.env.DB_POOL_MIN) || 0,
