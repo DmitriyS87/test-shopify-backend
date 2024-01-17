@@ -1,4 +1,7 @@
-import { sanitizeProduct, transformShopifyProduct } from "../helpers/product.js";
+import {
+  sanitizeProduct,
+  transformShopifyProduct,
+} from "../helpers/product.js";
 import productService from "./productService.js";
 import ShopifyService from "./shopify/shopify.js";
 

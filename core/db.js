@@ -4,13 +4,13 @@ import getImageModel from "../models/imageModel.js";
 import getProductImageModel from "../models/prductImageModel.js";
 import { dbConfig } from "./config.js";
 
-const {db, user, password, host, port, pool} = dbConfig;
+const { db, user, password, host, port, pool } = dbConfig;
 
 const sequelize = new Sequelize(db, user, password, {
   host,
   port,
   dialect: "postgres",
-  pool
+  pool,
 });
 
 const Product = getProductModel(sequelize, DataTypes);

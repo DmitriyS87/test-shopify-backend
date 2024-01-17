@@ -1,4 +1,4 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
@@ -8,6 +8,10 @@ import productsRoute from "./routes/productRoutes.js";
 import { morganConfig } from "./core/config.js";
 
 const app = express();
+
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
 
 app.use(helmet());
 app.use(morgan(morganConfig.logLvl));

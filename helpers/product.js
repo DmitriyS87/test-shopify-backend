@@ -1,4 +1,4 @@
-import { sanitizeHTML } from './sanitize.js';
+import { sanitizeHTML } from "./sanitize.js";
 
 export function transformShopifyProduct(graphqlData) {
   function decodeEdge({ node }) {
@@ -18,16 +18,8 @@ export function transformShopifyProduct(graphqlData) {
 }
 
 export function sanitizeProduct(product) {
-  const {
-    name,
-    shopify_id,
-    html,
-    status,
-    type,
-    description,
-    img_url,
-    img_id,
-  } = product;
+  const { name, shopify_id, html, status, type, description, img_url, img_id } =
+    product;
   return {
     name,
     shopify_id,
