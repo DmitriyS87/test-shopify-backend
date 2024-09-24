@@ -1,3 +1,3 @@
 # test-shopify-backend
 
-Приложение основано на базе express.js
+Приложение использует express.js
